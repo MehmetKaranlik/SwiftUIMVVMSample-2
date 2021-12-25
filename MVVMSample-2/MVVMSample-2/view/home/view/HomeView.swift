@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = HomeViewModel()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(viewModel.users) { index in
+            Text(index.name)
+            
+        }
+        .onAppear {
+            viewModel.getUsers()
+        }
     }
 }
 
